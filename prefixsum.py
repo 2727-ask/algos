@@ -1,4 +1,4 @@
-# By Using this technique we can calsulate sum 
+# By Using this technique we can calulate sum between two indexes in O(1) time complexity
 
 a = [1,2,3,4,5,6,7]
 
