@@ -1,0 +1,99 @@
+1) heap
+2) Queue
+
+
+1) Monolithic (Linux) 
+2) Micro Kernel
+3) Hybrid (File management in User Space) (MacOS, Windows)
+4) Nano / Exo
+
+
+
+[|N2]  <- [N2|N1] <- [N1|head]
+
+Heap:
+
+parent = (i-1)//2
+left = 2i + 1
+right = 2i + 2
+
+         5
+        / \
+       4   3
+      / \
+     2   15
+
+arr = [5,4,3,2,15]
+elm = 0
+
+
+            
+class Heap:
+    def __init__(self):
+        self.arr = []
+
+    def insert(self, val):
+        self.arr.append(val)
+        self.heapify(len(self.arr)-1)
+
+    def replace(self, val):
+        if(len(self.arr) > 0):
+            self.arr[0] = val
+            self.trickle(0)
+        
+    def trickle(self, i):
+        parent = self.arr[i]
+        left = 2i + 1
+        right = 2i + 2
+
+        while(left < len(self.arr) || right < len(self.arr) and i < len(self.arr)):
+            if(parent < self.arr[left]):
+                temp = self.arr[left]
+                self.arr[left] = parent
+                self.arr[i] = temp
+            else:
+                temp = self.arr[right]
+                self.arr[right] = parent
+                self.arr[i] = temp
+            i = i + 1
+            parent = self.arr[i]
+            left = 2i + 1
+            right = 2i + 2
+
+
+
+    def heapify(self, i):
+        parent = (i-1) // 2
+        while(i > 0 and self.arr[parent] < self.arr[i]):
+            temp = self.arr[parent]
+            self.arr[parent] = self.arr[i]
+            self.arr[i] = temp
+            i = parent
+            parent = (i-1) // 2
+
+    
+    def display(self):
+        for x in self.arr:
+            print(x)
+
+heap = Heap() #[3, 1 , 2]
+
+
+heap.insert(10)  # Add 10
+heap.insert(20)  # Add 20
+heap.insert(5)   # Add 5
+heap.insert(30)  # Add 30
+heap.insert(15)  
+
+heap.display()
+        
+
+        
+
+            
+        
+
+
+
+
+
